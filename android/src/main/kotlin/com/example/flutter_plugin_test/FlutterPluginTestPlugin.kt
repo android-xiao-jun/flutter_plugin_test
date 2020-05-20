@@ -50,7 +50,7 @@ public class FlutterPluginTestPlugin : FlutterPlugin, MethodCallHandler {
         } else if (call.method == "fullscreen") {
             call.arguments
             var argument: Boolean? = call.argument<Boolean>("full")
-            Log.e("fullscreen",""+argument);
+            Log.e("fullscreen",""+argument)
             if (argument != null) {
                 full(argument, registrar1.activity().window)
                 result.success("设置成功")
