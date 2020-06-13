@@ -19,7 +19,7 @@ public class FlutterPluginTestPlugin : FlutterPlugin, MethodCallHandler {
     private lateinit var channel: MethodChannel
 
     override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-        channel = MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "flutter_plugin_test")
+        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter_plugin_test")
         channel.setMethodCallHandler(this);
     }
 
@@ -48,11 +48,19 @@ public class FlutterPluginTestPlugin : FlutterPlugin, MethodCallHandler {
 
             result.success("Android ${android.os.Build.VERSION.RELEASE}")
         } else if (call.method == "fullscreen") {
-            call.arguments
             var argument: Boolean? = call.argument<Boolean>("full")
             Log.e("fullscreen",""+argument)
             if (argument != null) {
                 full(argument, registrar1.activity().window)
+                result.success("设置成功")
+            }else{
+                result.success("设置失败")
+            }
+        }else if(call.method == "bar_status"){
+            var argument: Boolean? = call.argument<Boolean>("drak")
+            if (argument != null) {
+                //低版本状态栏颜色问题
+                SetStatusBarLightModeUtils.set5_1BarTextColor(registrar1.activity(),argument);
                 result.success("设置成功")
             }else{
                 result.success("设置失败")

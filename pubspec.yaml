@@ -1,9 +1,8 @@
 name: flutter_plugin_test
 description: A new Flutter plugin.
 version: 0.0.1
-author:
+author: jun <jun@test.com>
 homepage: https://github.com/android-xiao-jun/flutter_plugin_test
-
 environment:
   sdk: ">=2.7.0 <3.0.0"
   flutter: ">=1.10.0"
