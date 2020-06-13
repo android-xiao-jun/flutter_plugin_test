@@ -11,9 +11,15 @@ class FlutterPluginTest {
     return version;
   }
 
-  static Future<String>  platformFullSreen(bool b) async {
+  static Future<String> platformFullSreen(bool b) async {
     Map<String, dynamic> map = {"full": b};
-    final String version = await _channel.invokeMethod('fullscreen',map);
+    final String version = await _channel.invokeMethod('fullscreen', map);
+    return version;
+  }
+
+  static Future<String> platform5_1Drak(bool b) async {
+    Map<String, dynamic> map = {"drak": b};
+    final String version = await _channel.invokeMethod('bar_status', map);
     return version;
   }
 }
